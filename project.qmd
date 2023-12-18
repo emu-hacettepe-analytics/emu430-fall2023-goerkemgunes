@@ -3,10 +3,17 @@ title: "Our Course Project"
 sidebar: false 
 ---
 
-I'm honored to be a member of the \[group name\] project team.
+I'm honored to be a member of the red_flag project team.
 
-Below, you'll find a brief summary of our project. To access a detailed project description, please go to [https://\[your-project-url\]](#0){.uri}.
+Below, you'll find a brief summary of our project. To access a detailed project description, please go to https://github.com/emu-hacettepe-analytics/emu430-fall2023-team-red_flag/blob/master/data.qmd
 
 **Summary**
 
-\[provide a biref summary of your project\]
+In this project, our primary focus will be on analyzing the Consumer Price Index (CPI) data sourced from the TUIK page. The CPI basket, which constitutes the basis of our study, is a representation of the consumption patterns of an average household. This basket encompasses various main expenditure groups, such as food, clothing, and health, each assigned a specific weight percentage. The measurement of inflation, or CPI, is derived from the price changes within these main groups, and our goal is to study into the shifts in the main expenditure groups' weights in the CPI basket in Turkey over the years, incorporating both economic and sociological perspectives.
+
+We have chosen to base our sociological analysis on the US CPI data, considering the United States as a developed country. To make our sociological assessments more understandable and consistent, we will use the US CPI as a benchmark. The data for analysis will be taken from the TUIK's annual updates to the basket weights, specifically focusing on the December data of each year.
+
+Our objectives in this project involve creating comprehensive tables and analytical tools based on the December data, considering its annual update. These tables and tools will be essential for both data visualization and the exploration of topics in other related courses. Through the use of weight data from the main expenditure groups in the CPI basket, we want to do sociological and economic analyses, comparing Turkey and the US.
+
+With the help of this research, we hope to get an in-depth view of the variables affecting inflation and provide knowledge to the discussion on social and economic dynamics in Turkey. We will do this by interpreting and comparing the US CPI information.
+
