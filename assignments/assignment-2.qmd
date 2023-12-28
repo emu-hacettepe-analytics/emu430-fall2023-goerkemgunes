@@ -77,5 +77,28 @@ df_before <- data.frame(
 )
 movies <- bind_rows(df_after,df_before)
 
+#Selecting the top 5 and bottom 5 movies based on Ratings
+#Firstly I ordered the movies data by ratings
+rating_order <- movies %>% arrange(Rating,desc(Rating))
+#Then select the top 5 and bottom 5
+bottom_5 <- head(rating_order, 5)
+top_5 <- tail(rating_order, 5)
+both_5 <- rbind(top_5, bottom_5)
 
 ```
+For the top 5 movies I watched CM101MMXI Fundamentals and I probably haven't watched both Hababam Sınıfı movies completely. To be honest, in my opinion, these movies, which are quite good for their time, do not entirely deserve these ratings and rankings.
+For the bottom 5 movies I can't say, I watched them so, I can't make any comment on these movies.
+
+```{r}
+#Checking rating of favourite movies
+#Yahsi Bati
+desired_movie_title <- "Yahsi Bati" 
+selected_movie_base <- movies[movies$Title == desired_movie_title, !(names(movies) %in% "Rank")]
+print(selected_movie_base, caption = desired_movie_title)
+#Dügün Dernek
+desired_movie_title <- "Dügün Dernek" 
+selected_movie_base <- movies[movies$Title == desired_movie_title, !(names(movies) %in% "Rank")]
+print(selected_movie_base, caption = desired_movie_title)
+```
+
+
