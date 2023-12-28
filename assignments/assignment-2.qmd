@@ -100,5 +100,63 @@ desired_movie_title <- "Dügün Dernek"
 selected_movie_base <- movies[movies$Title == desired_movie_title, !(names(movies) %in% "Rank")]
 print(selected_movie_base, caption = desired_movie_title)
 ```
+```{r}
+#plots for yearly rating averages and number of movies over the years
 
+movies$Year <- as.integer(movies$Year)
+avg_rating <- movies %>% 
+group_by(Year) %>%
+summarise(rating_avg= mean(Rating))
+avg_rating
 
+library(ggplot2)
+ggplot(avg_rating,aes(x= Year, y= rating_avg)) + geom_point()+
+labs(x = "Year", y = "Average Rating")
+
+movie_count <- movies %>%
+  group_by(Year) %>%
+  summarise(Count = n())
+
+ggplot(movie_count, aes(x = Year, y = Count)) +
+  geom_line() +
+  labs(x = "Year", y = "Number of Movies")
+
+ggplot(data = movies, aes(x = factor(Year), y = Rating)) +
+  geom_boxplot() +
+  labs(x = "Year", y = "Rating")
+
+#Correlation of Votes and Rating
+correlation <- cor(movies$Votes,movies$Rating)
+cat("Correlation between Votes and Rating", correlation, "\n")
+ggplot(movies, aes(x = Votes, y = Rating)) +
+  geom_point() +
+  labs(x = "Votes", y = "Rating")
+#Correlation of Duration and Rating
+correlation <- cor(movies$Duration,movies$Rating)
+cat("Correlation between Duration and Rating", correlation, "\n")
+ggplot(movies, aes(x = Duration, y = Rating)) +
+  geom_point() +
+  labs(x = "Duration", y = "Rating")
+
+#Top 1000 list
+top_1000<- "https://m.imdb.com/search/title/?title_type=feature&groups=top_1000&country_of_origin=TR&count=250"
+turkish_top_1000 <- read_html(top_1000)
+title <- turkish_top_1000 |> html_nodes('.ipc-title__text')
+title <- html_text(title)
+title <- tail(head(title,-1),-1)
+title <- str_split(title, " ", n=2)
+title <- unlist(lapply(title, function(x) {x[2]}))
+
+year <- turkish_top_1000 |> html_nodes('.dli-title-metadata-item:nth-child(1)')
+year <- html_text(year)
+year <- as.numeric(year)
+
+turkish_df <- data.frame(
+  Title = title,
+  Year = year
+)
+gathered <- inner_join(turkish_df, movies, by = c("Title" = "Title", "Year" = "Year"))
+order_gathered <- gathered %>% arrange(Rating,desc(Rating))
+
+```
+They are not same movies as our previous data. IMDB use different terms to order Top 1000 List.
