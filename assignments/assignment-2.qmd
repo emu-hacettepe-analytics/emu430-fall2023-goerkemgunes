@@ -11,7 +11,6 @@ after <- "https://m.imdb.com/search/title/?title_type=feature&release_date=2010-
 before <- "https://m.imdb.com/search/title/?title_type=feature&release_date=,2009-12-31&num_votes=2500,&country_of_origin=TR&count=250"
 after_2010 <- read_html(after)
 before_2010 <- read_html(before)
-
 title_names <- after_2010 |> html_nodes('.ipc-title__text')
 title_names <- html_text(title_names)
 title_names <- tail(head(title_names,-1),-1)
@@ -62,13 +61,21 @@ vote_b <- before_2010 |> html_nodes('.kRnqtn')
 vote_b <- html_text(vote_b)
 vote_b <- parse_number(vote_b)
 
-Title <- c(title_names,title_names_b)
-Year <- c(year,year_b)
-Duration <- c(duration,duration_b)
-Rating <- c(rating,rating_b)
-Votes <- c(vote,vote_b)
-
-movies <- data.frame(Title,Year,Duration,Rating,Votes)
+df_after <- data.frame(
+  Title = title_names,
+  Year = year,
+  Duration = duration,
+  Rating = rating,
+  Votes = vote
+)
+df_before <- data.frame(
+  Title=title_names_b,
+  Year=year_b,
+  Duration=duration_b,
+  Rating = rating_b,
+  Votes=vote_b
+)
+movies <- bind_rows(df_after,df_before)
 
 
 ```
