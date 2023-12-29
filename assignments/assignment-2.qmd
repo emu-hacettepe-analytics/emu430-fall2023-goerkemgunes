@@ -79,10 +79,10 @@ movies <- bind_rows(df_after,df_before)
 
 #Selecting the top 5 and bottom 5 movies based on Ratings
 #Firstly I ordered the movies data by ratings
-rating_order <- movies %>% arrange(Rating,desc(Rating))
+rating_order <- movies %>% arrange(desc(Rating))
 #Then select the top 5 and bottom 5
-bottom_5 <- head(rating_order, 5)
-top_5 <- tail(rating_order, 5)
+top_5 <- head(rating_order, 5)
+bottom_5 <- tail(rating_order, 5)
 both_5 <- rbind(top_5, bottom_5)
 
 ```
@@ -156,7 +156,7 @@ turkish_df <- data.frame(
   Year = year
 )
 gathered <- inner_join(turkish_df, movies, by = c("Title" = "Title", "Year" = "Year"))
-order_gathered <- gathered %>% arrange(Rating,desc(Rating))
+order_gathered <- gathered %>% arrange(desc(Rating))
 
 ```
 They are not same movies as our previous data. IMDB use different terms to order Top 1000 List.
