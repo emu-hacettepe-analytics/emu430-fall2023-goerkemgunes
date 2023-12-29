@@ -87,7 +87,7 @@ both_5 <- rbind(top_5, bottom_5)
 
 ```
 
-For the top 5 movies I watched CM101MMXI Fundamentals and I probably haven't watched both Hababam Sınıfı movies completely. To be honest, in my opinion, these movies, which are quite good for their time, do not entirely deserve these ratings and rankings. For the bottom 5 movies I can't say, I watched them so, I can't make any comment on these movies.
+For the top 5 movies I watched CM101MMXI Fundamentals and I probably haven't watched both Hababam Sınıfı movies completely. To be honest, in my opinion, these movies, which are quite good for their time, do not entirely deserve these ratings and rankings. For the bottom 5 movies I can't say, I watched them so, I can't make any comment on these movies. test
 
 ```{r}
 #Checking rating of favourite movies
