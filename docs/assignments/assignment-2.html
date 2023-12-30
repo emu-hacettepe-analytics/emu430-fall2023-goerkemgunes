@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Görkem Güneş’s Analytics Lab - Assignment 2</title>
+<title>Görkem Güneş's Analytics Lab – assignment-2</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -128,7 +128,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../assignments/assignment-2.html">Assignment 2</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../assignments/assignment-2.html">assignment-2.html</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -163,18 +163,12 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../assignments/assignment-2.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Assignment 2</span></a>
+ <span class="menu-text">assignment-2.html</span></a>
   </div>
 </li>
     </ul>
     </div>
-    <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#assignment-2" id="toc-assignment-2" class="nav-link active" data-scroll-target="#assignment-2">Assignment 2</a></li>
-  </ul>
-</nav>
+    
 </nav>
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
@@ -183,37 +177,20 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Assignment 2</h1>
-</div>
 
 
-
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-</header>
-
-<section id="assignment-2" class="level1">
-<h1>Assignment 2</h1>
-<p>```{r} library(rvest) library(tidyverse) after &lt;- “https://m.imdb.com/search/title/?title_type=feature&amp;release_date=2010-01-01,2023-12-31&amp;num_votes=2500,&amp;country_of_origin=TR&amp;count=250” before &lt;- “https://m.imdb.com/search/title/?title_type=feature&amp;release_date=,2009-12-31&amp;num_votes=2500,&amp;country_of_origin=TR&amp;count=250” after_2010 &lt;- read_html(after) before_2010 &lt;- read_html(before) title_names &lt;- after_2010 |&gt; html_nodes(‘.ipc-title__text’) title_names &lt;- html_text(title_names) title_names &lt;- tail(head(title_names,-1),-1) title_names &lt;- str_split(title_names, ” “, n=2) title_names &lt;- unlist(lapply(title_names, function(x) {x[2]}))</p>
+<p>library(rvest) library(tidyverse) after &lt;- “https://m.imdb.com/search/title/?title_type=feature&amp;release_date=2010-01-01,2023-12-31&amp;num_votes=2500,&amp;country_of_origin=TR&amp;count=250” before &lt;- “https://m.imdb.com/search/title/?title_type=feature&amp;release_date=,2009-12-31&amp;num_votes=2500,&amp;country_of_origin=TR&amp;count=250” after_2010 &lt;- read_html(after) before_2010 &lt;- read_html(before) title_names &lt;- after_2010 |&gt; html_nodes(’.ipc-title__text’) title_names &lt;- html_text(title_names) title_names &lt;- tail(head(title_names,-1),-1) title_names &lt;- str_split(title_names, ” “, n=2) title_names &lt;- unlist(lapply(title_names, function(x) {x[2]}))</p>
 <p>year &lt;-after_2010|&gt; html_nodes(‘.dli-title-metadata-item:nth-child(1)’) year &lt;- html_text(year) year &lt;- as.numeric(year)</p>
 <p>duration &lt;- after_2010|&gt; html_nodes(‘.dli-title-metadata-item:nth-child(2)’) duration &lt;- html_text(duration) duration &lt;- sapply(str_extract_all(duration, “\d+”), function(x) { x1 &lt;- as.numeric(x) if(length(x1)&gt;1) x1[1]*60 + x1[2] else x1 })</p>
 <p>rating &lt;- after_2010 |&gt; html_nodes(‘.ratingGroup–imdb-rating’) rating &lt;- html_text(rating) rating &lt;- as.numeric(substr(rating,1,3))</p>
 <p>vote &lt;- after_2010|&gt; html_nodes(‘.kRnqtn’) vote &lt;- html_text(vote) vote &lt;- parse_number(vote)</p>
-<p>title_names_b &lt;- before_2010 |&gt; html_nodes(‘.ipc-title__text’) title_names_b &lt;- html_text(title_names_b) title_names_b &lt;- tail(head(title_names_b,-1),-1) title_names_b &lt;- str_split(title_names_b, ” “, n=2) title_names_b &lt;- unlist(lapply(title_names_b, function(x) {x[2]}))</p>
+<p>title_names_b &lt;- before_2010 |&gt; html_nodes(’.ipc-title__text’) title_names_b &lt;- html_text(title_names_b) title_names_b &lt;- tail(head(title_names_b,-1),-1) title_names_b &lt;- str_split(title_names_b, ” “, n=2) title_names_b &lt;- unlist(lapply(title_names_b, function(x) {x[2]}))</p>
 <p>year_b &lt;- before_2010 |&gt; html_nodes(‘.dli-title-metadata-item:nth-child(1)’) year_b &lt;- html_text(year_b) year_b &lt;- as.numeric(year_b)</p>
 <p>duration_b &lt;- before_2010 |&gt; html_nodes(‘.dli-title-metadata-item:nth-child(2)’) duration_b &lt;- html_text(duration_b) duration_b &lt;- sapply(str_extract_all(duration_b, “\d+”), function(x) { x1 &lt;- as.numeric(x) if(length(x1)&gt;1) x1[1]*60 + x1[2] else x1 })</p>
 <p>rating_b &lt;- before_2010 |&gt; html_nodes(‘.ratingGroup–imdb-rating’) rating_b &lt;- html_text(rating_b) rating_b &lt;- as.numeric(substr(rating_b,1,3))</p>
 <p>vote_b &lt;- before_2010 |&gt; html_nodes(‘.kRnqtn’) vote_b &lt;- html_text(vote_b) vote_b &lt;- parse_number(vote_b)</p>
 <p>df_after &lt;- data.frame( Title = title_names, Year = year, Duration = duration, Rating = rating, Votes = vote ) df_before &lt;- data.frame( Title=title_names_b, Year=year_b, Duration=duration_b, Rating = rating_b, Votes=vote_b ) movies &lt;- bind_rows(df_after,df_before)</p>
-<p>#Selecting the top 5 and bottom 5 movies based on Ratings #Firstly I ordered the movies data by ratings rating_order &lt;- movies %&gt;% arrange(desc(Rating)) #Then select the top 5 and bottom 5 top_5 &lt;- head(rating_order, 5) bottom_5 &lt;- tail(rating_order, 5) both_5 &lt;- rbind(top_5, bottom_5) ’’’ For the top 5 movies I watched CM101MMXI Fundamentals and I probably haven’t watched both Hababam Sınıfı movies completely. To be honest, in my opinion, these movies, which are quite good for their time, do not entirely deserve these ratings and rankings. For the bottom 5 movies I can’t say, I watched them so, I can’t make any comment on these movies. ```{r}</p>
+<p>#Selecting the top 5 and bottom 5 movies based on Ratings #Firstly I ordered the movies data by ratings rating_order &lt;- movies %&gt;% arrange(desc(Rating)) #Then select the top 5 and bottom 5 top_5 &lt;- head(rating_order, 5) bottom_5 &lt;- tail(rating_order, 5) both_5 &lt;- rbind(top_5, bottom_5)</p>
 <p>#Checking rating of favourite movies #Yahsi Bati desired_movie_title &lt;- “Yahsi Bati” selected_movie_base &lt;- movies[movies<span class="math inline">\(Title == desired_movie_title, !(names(movies) %in% "Rank")] print(selected_movie_base, caption = desired_movie_title) #Dügün Dernek desired_movie_title &lt;- "Dügün Dernek" selected_movie_base &lt;- movies[movies\)</span>Title == desired_movie_title, !(names(movies) %in% “Rank”)] print(selected_movie_base, caption = desired_movie_title)</p>
 <p>#plots for yearly rating averages and number of movies over the years</p>
 <p>movies<span class="math inline">\(Year &lt;- as.integer(movies\)</span>Year) avg_rating &lt;- movies %&gt;% group_by(Year) %&gt;% summarise(rating_avg= mean(Rating)) avg_rating</p>
@@ -222,13 +199,11 @@ ul.task-list li input[type="checkbox"] {
 <p>ggplot(movie_count, aes(x = Year, y = Count)) + geom_line() + labs(x = “Year”, y = “Number of Movies”)</p>
 <p>ggplot(data = movies, aes(x = factor(Year), y = Rating)) + geom_boxplot() + labs(x = “Year”, y = “Rating”)</p>
 <p>#Correlation of Votes and Rating correlation &lt;- cor(movies<span class="math inline">\(Votes,movies\)</span>Rating) cat(“Correlation between Votes and Rating”, correlation, “”) ggplot(movies, aes(x = Votes, y = Rating)) + geom_point() + labs(x = “Votes”, y = “Rating”) #Correlation of Duration and Rating correlation &lt;- cor(movies<span class="math inline">\(Duration,movies\)</span>Rating) cat(“Correlation between Duration and Rating”, correlation, “”) ggplot(movies, aes(x = Duration, y = Rating)) + geom_point() + labs(x = “Duration”, y = “Rating”)</p>
-<p>#Top 1000 list top_1000&lt;- “https://m.imdb.com/search/title/?title_type=feature&amp;groups=top_1000&amp;country_of_origin=TR&amp;count=250” turkish_top_1000 &lt;- read_html(top_1000) title &lt;- turkish_top_1000 |&gt; html_nodes(‘.ipc-title__text’) title &lt;- html_text(title) title &lt;- tail(head(title,-1),-1) title &lt;- str_split(title, ” “, n=2) title &lt;- unlist(lapply(title, function(x) {x[2]}))</p>
+<p>#Top 1000 list top_1000&lt;- “https://m.imdb.com/search/title/?title_type=feature&amp;groups=top_1000&amp;country_of_origin=TR&amp;count=250” turkish_top_1000 &lt;- read_html(top_1000) title &lt;- turkish_top_1000 |&gt; html_nodes(’.ipc-title__text’) title &lt;- html_text(title) title &lt;- tail(head(title,-1),-1) title &lt;- str_split(title, ” “, n=2) title &lt;- unlist(lapply(title, function(x) {x[2]}))</p>
 <p>year &lt;- turkish_top_1000 |&gt; html_nodes(‘.dli-title-metadata-item:nth-child(1)’) year &lt;- html_text(year) year &lt;- as.numeric(year)</p>
 <p>turkish_df &lt;- data.frame( Title = title, Year = year ) gathered &lt;- inner_join(turkish_df, movies, by = c(“Title” = “Title”, “Year” = “Year”)) order_gathered &lt;- gathered %&gt;% arrange(desc(Rating))</p>
-<p>’’’ Movies that I ordered from Top1000 list is not same with the previous dataset’s first 11 movies. So, we can understand that, IMDB using different system in Top1000 list while ranking the movies.</p>
 
 
-</section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
