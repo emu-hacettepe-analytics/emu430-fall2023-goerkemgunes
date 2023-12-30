@@ -1,6 +1,7 @@
 ---
 title: "Assignment 2"
 ---
+
 ```{r}
 
 library(rvest)
@@ -83,7 +84,9 @@ top_5 <- head(rating_order, 5)
 bottom_5 <- tail(rating_order, 5)
 both_5 <- rbind(top_5, bottom_5)
 ```
+
 For the top 5 movies I watched CM101MMXI Fundamentals and I probably haven't watched both Hababam Sınıfı movies completely. To be honest, in my opinion, these movies, which are quite good for their time, do not entirely deserve these ratings and rankings. For the bottom 5 movies I can't say, I watched them so, I can't make any comment on these movies.
+
 ```{r}
 
 #Checking rating of favourite movies
@@ -155,6 +158,5 @@ gathered <- inner_join(turkish_df, movies, by = c("Title" = "Title", "Year" = "Y
 order_gathered <- gathered %>% arrange(desc(Rating))
 
 ```
+
 Movies that I ordered from Top1000 list is not same with the previous dataset's first 11 movies. So, we can understand that, IMDB using different system in Top1000 list while ranking the movies.
-
-
